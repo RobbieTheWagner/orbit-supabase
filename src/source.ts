@@ -14,7 +14,6 @@
  * ```
  */
 
-import { Orbit } from '@orbit/core';
 import { Source } from '@orbit/data';
 import type {
   InitializedRecord,
@@ -27,7 +26,6 @@ import type {
 } from '@orbit/records';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
-const { assert } = Orbit;
 
 // ============================================================================
 // Types & Interfaces
@@ -125,7 +123,6 @@ export class SupabaseSource extends Source {
       settings.singularize
     );
     this.serializer = new RecordSerializer(
-      this.schema,
       this.typeMap,
       this.caseTransform,
       this.inflector
@@ -225,11 +222,11 @@ export class SupabaseSource extends Source {
     const tableName = this.getTableName(type);
     const selectClause = this.buildSelectClause(type);
 
-    let query = this.supabase
+    // Build query with RLS filter
+    const baseQuery = this.supabase
       .from(tableName)
       .select(selectClause)
-      .eq('id', id)
-      .single();
+      .eq('id', id);
 
     // Add RLS filter if enabled
     if (this.shouldApplyRLS(type)) {
@@ -238,10 +235,17 @@ export class SupabaseSource extends Source {
         throw new Error('User ID required for RLS-enabled tables');
       }
       const userIdCol = this.getUserIdColumn(type);
-      query = query.eq(userIdCol, userId);
+      const { data, error } = await baseQuery.eq(userIdCol, userId).single();
+
+      if (error) {
+        if (error.code === 'PGRST116') return null; // Not found
+        throw new Error(`Supabase query error: ${error.message}`);
+      }
+
+      return this.serializer.deserialize(type, data);
     }
 
-    const { data, error } = await query;
+    const { data, error } = await baseQuery.single();
 
     if (error) {
       if (error.code === 'PGRST116') return null; // Not found
@@ -501,7 +505,6 @@ export class SupabaseSource extends Source {
 
 class RecordSerializer {
   constructor(
-    private schema: RecordSchema,
     private typeMap: TypeMap,
     private caseTransform: 'snake_case' | 'camelCase' | 'none',
     private inflector: InflectionHelper
