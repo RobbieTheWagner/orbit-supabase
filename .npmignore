@@ -1,0 +1,34 @@
+# Source files (TypeScript)
+src/
+test/
+examples/
+
+# Config files
+tsconfig.json
+vitest.config.ts
+eslint.config.mjs
+.prettierrc.json
+
+# Development files
+.github/
+.vscode/
+*.test.ts
+*.spec.ts
+
+# Documentation (keep README.md, LICENSE, CHANGELOG.md)
+SETUP.md
+CONTRIBUTING.md
+
+# Build artifacts
+coverage/
+*.tsbuildinfo
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Misc
+.DS_Store
+*.log
+node_modules/

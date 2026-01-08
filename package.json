@@ -1,0 +1,84 @@
+{
+  "name": "orbit-supabase",
+  "version": "0.1.0",
+  "description": "A generic Orbit.js source adapter for Supabase PostgreSQL databases",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build:watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "prepublishOnly": "npm run build && npm run test",
+    "release": "npm run build && npm publish",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "orbit",
+    "orbitjs",
+    "supabase",
+    "postgres",
+    "postgresql",
+    "sync",
+    "offline-first",
+    "data",
+    "orm",
+    "database"
+  ],
+  "author": "Robert Wagner <rwwagner90@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RobbieTheWagner/orbit-supabase.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RobbieTheWagner/orbit-supabase/issues"
+  },
+  "homepage": "https://github.com/RobbieTheWagner/orbit-supabase#readme",
+  "devDependencies": {
+    "@orbit/core": "^0.17.0",
+    "@orbit/data": "^0.17.0",
+    "@orbit/records": "^0.17.0",
+    "@supabase/supabase-js": "^2.49.2",
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "@orbit/core": ">=0.17.0",
+    "@orbit/data": ">=0.17.0",
+    "@orbit/records": ">=0.17.0",
+    "@supabase/supabase-js": ">=2.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
