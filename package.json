@@ -2,37 +2,6 @@
   "name": "orbit-supabase",
   "version": "0.1.0",
   "description": "A generic Orbit.js source adapter for Supabase PostgreSQL databases",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist",
-    "src",
-    "README.md",
-    "LICENSE"
-  ],
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
-    "build:watch": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
-    "prepublishOnly": "npm run build && npm run test",
-    "prepare": "npm run build"
-  },
   "keywords": [
     "orbit",
     "orbitjs",
@@ -45,16 +14,47 @@
     "orm",
     "database"
   ],
-  "author": "Robert Wagner <rwwagner90@gmail.com>",
-  "license": "MIT",
+  "homepage": "https://github.com/RobbieTheWagner/orbit-supabase#readme",
+  "bugs": {
+    "url": "https://github.com/RobbieTheWagner/orbit-supabase/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/RobbieTheWagner/orbit-supabase.git"
   },
-  "bugs": {
-    "url": "https://github.com/RobbieTheWagner/orbit-supabase/issues"
+  "license": "MIT",
+  "author": "Robert Wagner <rwwagner90@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
-  "homepage": "https://github.com/RobbieTheWagner/orbit-supabase#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build:watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm run test",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@orbit/core": "^0.17.0",
@@ -68,6 +68,7 @@
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "prettier": "^3.4.2",
+    "release-plan": "^0.17.0",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
