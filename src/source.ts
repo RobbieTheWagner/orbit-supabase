@@ -1,9 +1,9 @@
 /**
  * orbit-supabase Prototype Implementation
- * 
+ *
  * This is a proof-of-concept for a generic, reusable Orbit.js source
  * for Supabase PostgreSQL databases.
- * 
+ *
  * @example
  * ```typescript
  * const remote = new SupabaseSource({
@@ -25,7 +25,6 @@ import type {
   RecordTransformResult,
 } from '@orbit/records';
 import type { SupabaseClient } from '@supabase/supabase-js';
-
 
 // ============================================================================
 // Types & Interfaces
@@ -518,8 +517,7 @@ class RecordSerializer {
     // Serialize attributes
     for (const [key, value] of Object.entries(attributes)) {
       const attrConfig = typeConfig.attributes?.[key];
-      const columnName =
-        attrConfig?.column ?? this.transformAttributeName(key);
+      const columnName = attrConfig?.column ?? this.transformAttributeName(key);
 
       // Skip timestamps (managed by DB)
       if (
@@ -562,10 +560,10 @@ class RecordSerializer {
       if (
         columnName === 'id' ||
         columnName === (typeConfig.rls?.userIdColumn ?? 'user_id') ||
-        typeof value === 'object' &&
+        (typeof value === 'object' &&
           Array.isArray(value) &&
           value.length > 0 &&
-          typeof value[0] === 'object'
+          typeof value[0] === 'object')
       ) {
         continue;
       }

@@ -57,6 +57,7 @@
   },
   "homepage": "https://github.com/RobbieTheWagner/orbit-supabase#readme",
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@orbit/core": "^0.17.0",
     "@orbit/data": "^0.17.0",
     "@orbit/records": "^0.17.0",

@@ -1,8 +1,8 @@
 /**
  * orbit-supabase
- * 
+ *
  * A generic Orbit.js source adapter for Supabase PostgreSQL databases
- * 
+ *
  * @packageDocumentation
  */
 

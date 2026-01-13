@@ -1,5 +1,9 @@
 # orbit-supabase Package
 
+[![CI](https://github.com/RobbieTheWagner/orbit-supabase/workflows/CI/badge.svg)](https://github.com/RobbieTheWagner/orbit-supabase/actions/workflows/ci.yml)
+[![npm version](https://badge.fury.io/js/orbit-supabase.svg)](https://www.npmjs.com/package/orbit-supabase)
+[![codecov](https://codecov.io/gh/RobbieTheWagner/orbit-supabase/branch/main/graph/badge.svg)](https://codecov.io/gh/RobbieTheWagner/orbit-supabase)
+
 > A generic Orbit.js source adapter for Supabase PostgreSQL databases
 
 ## Quick Links
@@ -139,8 +143,9 @@ const remote = new SupabaseSource({
 
 - [x] Design complete
 - [x] Prototype implemented
-- [ ] Create npm package
-- [ ] Write comprehensive tests
+- [x] Create npm package
+- [x] Write comprehensive tests (27 tests, 76% coverage)
+- [x] CI/CD with GitHub Actions
 - [ ] Publish to npm
 - [ ] Documentation site
 - [ ] Example applications

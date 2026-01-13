@@ -195,7 +195,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
 
       expect(result).toHaveLength(1);
       expect(result[0].attributes?.publishedAt).toBe('2024-01-01T00:00:00Z');
@@ -292,7 +294,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
 
       expect(result).toHaveLength(1);
       expect(result[0].relationships?.author).toEqual({
@@ -365,7 +369,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
       const record = result[0];
 
       expect(record.attributes).not.toHaveProperty('userId');
@@ -688,7 +694,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
 
       expect(result).toHaveLength(2);
       expect(mockSupabase.from).toHaveBeenCalledWith('posts');
@@ -722,7 +730,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
 
       expect(result).toBeDefined();
       expect(mockSupabase.from).toHaveBeenCalledWith('posts');
@@ -748,7 +758,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
 
       expect(result).toEqual([]);
     });
@@ -916,7 +928,9 @@ describe('SupabaseSource', () => {
         },
       };
 
-      const result = (await (source as any)._query(query)) as InitializedRecord[];
+      const result = (await (source as any)._query(
+        query
+      )) as InitializedRecord[];
       const record = result[0];
 
       expect(record.attributes?.publishedAt).toBe('2024-01-01T00:00:00.000Z');
