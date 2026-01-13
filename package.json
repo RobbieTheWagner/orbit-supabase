@@ -31,7 +31,6 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
     "prepublishOnly": "npm run build && npm run test",
-    "release": "npm run build && npm publish",
     "prepare": "npm run build"
   },
   "keywords": [
